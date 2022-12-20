@@ -9,8 +9,9 @@ class ShoppingBloc extends Bloc<ShoppingEvent, ShoppingState> {
   ShoppingBloc() : super(const ShoppingState.productList(products: [])) {
     on<AddEvent>(
       (event, emit) {
-        state.products.add(ShoppingProduct);
-        List<ShoppingProduct> newProducts = [...state.products];
+        final newProducts = [...state.products];
+        newProducts.add(event.product);
+        
         emit(ShoppingState.productList(products: [...newProducts]));
       },
     );

@@ -6,13 +6,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shopping/shopping_data.dart';
 
 class ShoppingComponent extends StatelessWidget {
-  const ShoppingComponent(
-      {Key? key, required this.icon, required this.name, required this.price})
-      : super(key: key);
+  const ShoppingComponent({
+    Key? key,
+    required this.icon,
+    required this.name,
+    required this.price,
+    required this.index,
+    required this.isDisabled,
+  }) : super(key: key);
 
   final IconData icon;
   final String name;
   final int price;
+  final int index;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +65,14 @@ class ShoppingComponent extends StatelessWidget {
                           onPressed: () {
                             final shoppingBloc = context.read<ShoppingBloc>();
                             shoppingBloc.add(
-                              const AddEvent(
+                              AddEvent(
                                 product: ShoppingProduct(
-                                    name: 'name', price: 23, icon: Icons.abc),
+                                  name: name,
+                                  price: price,
+                                  icon: icon,
+                                  index: index,
+                                  isDisabled: isDisabled,
+                                ),
                               ),
                             );
                           },

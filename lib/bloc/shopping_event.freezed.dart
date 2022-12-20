@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ShoppingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ShoppingProduct product) add,
+    required TResult Function(ShoppingProduct product, int index) add,
     required TResult Function() remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ShoppingProduct product)? add,
+    TResult? Function(ShoppingProduct product, int index)? add,
     TResult? Function()? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ShoppingProduct product)? add,
+    TResult Function(ShoppingProduct product, int index)? add,
     TResult Function()? remove,
     required TResult orElse(),
   }) =>
@@ -80,7 +80,7 @@ abstract class _$$AddEventCopyWith<$Res> {
           _$AddEvent value, $Res Function(_$AddEvent) then) =
       __$$AddEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({ShoppingProduct product});
+  $Res call({ShoppingProduct product, int index});
 }
 
 /// @nodoc
@@ -94,12 +94,17 @@ class __$$AddEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? product = freezed,
+    Object? index = null,
   }) {
     return _then(_$AddEvent(
       product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ShoppingProduct,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -107,14 +112,16 @@ class __$$AddEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
-  const _$AddEvent({required this.product});
+  const _$AddEvent({required this.product, required this.index});
 
   @override
   final ShoppingProduct product;
+  @override
+  final int index;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShoppingEvent.add(product: $product)';
+    return 'ShoppingEvent.add(product: $product, index: $index)';
   }
 
   @override
@@ -122,7 +129,8 @@ class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ShoppingEvent.add'))
-      ..add(DiagnosticsProperty('product', product));
+      ..add(DiagnosticsProperty('product', product))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override
@@ -130,12 +138,13 @@ class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddEvent &&
-            const DeepCollectionEquality().equals(other.product, product));
+            const DeepCollectionEquality().equals(other.product, product) &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(product));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(product), index);
 
   @JsonKey(ignore: true)
   @override
@@ -146,30 +155,30 @@ class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ShoppingProduct product) add,
+    required TResult Function(ShoppingProduct product, int index) add,
     required TResult Function() remove,
   }) {
-    return add(product);
+    return add(product, index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ShoppingProduct product)? add,
+    TResult? Function(ShoppingProduct product, int index)? add,
     TResult? Function()? remove,
   }) {
-    return add?.call(product);
+    return add?.call(product, index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ShoppingProduct product)? add,
+    TResult Function(ShoppingProduct product, int index)? add,
     TResult Function()? remove,
     required TResult orElse(),
   }) {
     if (add != null) {
-      return add(product);
+      return add(product, index);
     }
     return orElse();
   }
@@ -207,9 +216,12 @@ class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
 }
 
 abstract class AddEvent implements ShoppingEvent {
-  const factory AddEvent({required final ShoppingProduct product}) = _$AddEvent;
+  const factory AddEvent(
+      {required final ShoppingProduct product,
+      required final int index}) = _$AddEvent;
 
   ShoppingProduct get product;
+  int get index;
   @JsonKey(ignore: true)
   _$$AddEventCopyWith<_$AddEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -259,7 +271,7 @@ class _$RemoveEvent with DiagnosticableTreeMixin implements RemoveEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ShoppingProduct product) add,
+    required TResult Function(ShoppingProduct product, int index) add,
     required TResult Function() remove,
   }) {
     return remove();
@@ -268,7 +280,7 @@ class _$RemoveEvent with DiagnosticableTreeMixin implements RemoveEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ShoppingProduct product)? add,
+    TResult? Function(ShoppingProduct product, int index)? add,
     TResult? Function()? remove,
   }) {
     return remove?.call();
@@ -277,7 +289,7 @@ class _$RemoveEvent with DiagnosticableTreeMixin implements RemoveEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ShoppingProduct product)? add,
+    TResult Function(ShoppingProduct product, int index)? add,
     TResult Function()? remove,
     required TResult orElse(),
   }) {
