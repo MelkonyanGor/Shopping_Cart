@@ -5,22 +5,26 @@ import 'package:flutter_shopping/pages/line.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shopping/shopping_data.dart';
 
-class ShoppingComponent extends StatelessWidget {
+class ShoppingComponent extends StatefulWidget {
   const ShoppingComponent({
     Key? key,
     required this.icon,
     required this.name,
     required this.price,
     required this.index,
-    required this.isDisabled,
   }) : super(key: key);
 
   final IconData icon;
   final String name;
   final int price;
   final int index;
-  final bool isDisabled;
 
+  @override
+  State<ShoppingComponent> createState() => _ShoppingComponentState();
+}
+
+class _ShoppingComponentState extends State<ShoppingComponent> {
+  bool isDisabled = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,7 +42,7 @@ class ShoppingComponent extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Icon(
-                      icon,
+                      widget.icon,
                       size: 120.0,
                     ),
                   ),
@@ -51,7 +55,7 @@ class ShoppingComponent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name,
+                      widget.name,
                       style: const TextStyle(fontSize: 20.0),
                     ),
                     const SizedBox(
@@ -59,24 +63,24 @@ class ShoppingComponent extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(price.toString()),
+                        Text(widget.price.toString()),
                         const Text('USD'),
                         IconButton(
                           onPressed: () {
+                            isDisabled = true;
                             final shoppingBloc = context.read<ShoppingBloc>();
                             shoppingBloc.add(
                               AddEvent(
                                 product: ShoppingProduct(
-                                  name: name,
-                                  price: price,
-                                  icon: icon,
-                                  index: index,
-                                  isDisabled: isDisabled,
+                                  name: widget.name,
+                                  price: widget.price,
+                                  icon: widget.icon,
+                                  index: widget.index,
                                 ),
                               ),
                             );
                           },
-                          icon: const Icon(Icons.add),
+                          icon: Icon(isDisabled ? Icons.done : Icons.add),
                         ),
                       ],
                     ),

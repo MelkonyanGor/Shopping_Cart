@@ -14,12 +14,23 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<ShoppingProduct> products = [
-    ShoppingProduct(name: 'name', price: 233, icon: Icons.add, index: 0, isDisabled: false),
-    ShoppingProduct(
-        name: 'surname', price: 133, icon: Icons.abc_outlined, index: 1, isDisabled: false),
-    ShoppingProduct(name: 'e', price: 23, icon: Icons.ac_unit, index: 2, isDisabled: false),
-    ShoppingProduct(
-        name: 'me', price: 55, icon: Icons.ac_unit_rounded, index: 3, isDisabled: false),
+    const ShoppingProduct(
+        name: 'iphone',
+        price: 100,
+        icon: Icons.phone_android_outlined,
+        index: 0),
+    const ShoppingProduct(
+      name: 'iwatch',
+      price: 50,
+      icon: Icons.watch,
+      index: 1,
+    ),
+    const ShoppingProduct(
+      name: 'macbook',
+      price: 150,
+      icon: Icons.computer,
+      index: 2,
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -29,18 +40,25 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(right: 8.0),
-                  child: Icon(Icons.shopping_cart),
-                ),
-                BlocBuilder<ShoppingBloc, ShoppingState>(
-                  builder: (context, state) {
-                    return Text(state.products.length.toString());
-                  },
-                ),
-              ],
+            child: BlocBuilder<ShoppingBloc, ShoppingState>(
+              builder: (context, state) {
+                return Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(right: 8.0),
+                      child: Icon(Icons.shopping_cart),
+                    ),
+                    Text(
+                      state.products.length.toString(),
+                    ),
+                    const SizedBox(width: 40.0),
+                    Text(
+                      state.price.toString(),
+                    ),
+                    const Text('USD'),
+                  ],
+                );
+              },
             ),
           ),
         ),
@@ -54,7 +72,6 @@ class _HomePageState extends State<HomePage> {
                   name: products[index].name,
                   price: products[index].price,
                   index: products[index].index,
-                  isDisabled: products[index].isDisabled,
                 );
               },
             );

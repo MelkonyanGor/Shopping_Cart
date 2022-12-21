@@ -20,26 +20,21 @@ mixin _$ShoppingModel {
   int get price => throw _privateConstructorUsedError;
   IconData get icon => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
-  bool get isDisabled => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name, int price, IconData icon, int index, bool isDisabled)
+    required TResult Function(String name, int price, IconData icon, int index)
         product,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name, int price, IconData icon, int index, bool isDisabled)?
+    TResult? Function(String name, int price, IconData icon, int index)?
         product,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name, int price, IconData icon, int index, bool isDisabled)?
-        product,
+    TResult Function(String name, int price, IconData icon, int index)? product,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,8 +66,7 @@ abstract class $ShoppingModelCopyWith<$Res> {
           ShoppingModel value, $Res Function(ShoppingModel) then) =
       _$ShoppingModelCopyWithImpl<$Res, ShoppingModel>;
   @useResult
-  $Res call(
-      {String name, int price, IconData icon, int index, bool isDisabled});
+  $Res call({String name, int price, IconData icon, int index});
 }
 
 /// @nodoc
@@ -92,7 +86,6 @@ class _$ShoppingModelCopyWithImpl<$Res, $Val extends ShoppingModel>
     Object? price = null,
     Object? icon = null,
     Object? index = null,
-    Object? isDisabled = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -111,10 +104,6 @@ class _$ShoppingModelCopyWithImpl<$Res, $Val extends ShoppingModel>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      isDisabled: null == isDisabled
-          ? _value.isDisabled
-          : isDisabled // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -127,8 +116,7 @@ abstract class _$$ShoppingProductCopyWith<$Res>
       __$$ShoppingProductCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name, int price, IconData icon, int index, bool isDisabled});
+  $Res call({String name, int price, IconData icon, int index});
 }
 
 /// @nodoc
@@ -146,7 +134,6 @@ class __$$ShoppingProductCopyWithImpl<$Res>
     Object? price = null,
     Object? icon = null,
     Object? index = null,
-    Object? isDisabled = null,
   }) {
     return _then(_$ShoppingProduct(
       name: null == name
@@ -165,10 +152,6 @@ class __$$ShoppingProductCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      isDisabled: null == isDisabled
-          ? _value.isDisabled
-          : isDisabled // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -180,8 +163,7 @@ class _$ShoppingProduct implements ShoppingProduct {
       {required this.name,
       required this.price,
       required this.icon,
-      required this.index,
-      required this.isDisabled});
+      required this.index});
 
   @override
   final String name;
@@ -191,12 +173,10 @@ class _$ShoppingProduct implements ShoppingProduct {
   final IconData icon;
   @override
   final int index;
-  @override
-  final bool isDisabled;
 
   @override
   String toString() {
-    return 'ShoppingModel.product(name: $name, price: $price, icon: $icon, index: $index, isDisabled: $isDisabled)';
+    return 'ShoppingModel.product(name: $name, price: $price, icon: $icon, index: $index)';
   }
 
   @override
@@ -207,14 +187,11 @@ class _$ShoppingProduct implements ShoppingProduct {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.index, index) || other.index == index) &&
-            (identical(other.isDisabled, isDisabled) ||
-                other.isDisabled == isDisabled));
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, price, icon, index, isDisabled);
+  int get hashCode => Object.hash(runtimeType, name, price, icon, index);
 
   @JsonKey(ignore: true)
   @override
@@ -225,33 +202,29 @@ class _$ShoppingProduct implements ShoppingProduct {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name, int price, IconData icon, int index, bool isDisabled)
+    required TResult Function(String name, int price, IconData icon, int index)
         product,
   }) {
-    return product(name, price, icon, index, isDisabled);
+    return product(name, price, icon, index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name, int price, IconData icon, int index, bool isDisabled)?
+    TResult? Function(String name, int price, IconData icon, int index)?
         product,
   }) {
-    return product?.call(name, price, icon, index, isDisabled);
+    return product?.call(name, price, icon, index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name, int price, IconData icon, int index, bool isDisabled)?
-        product,
+    TResult Function(String name, int price, IconData icon, int index)? product,
     required TResult orElse(),
   }) {
     if (product != null) {
-      return product(name, price, icon, index, isDisabled);
+      return product(name, price, icon, index);
     }
     return orElse();
   }
@@ -290,8 +263,7 @@ abstract class ShoppingProduct implements ShoppingModel {
       {required final String name,
       required final int price,
       required final IconData icon,
-      required final int index,
-      required final bool isDisabled}) = _$ShoppingProduct;
+      required final int index}) = _$ShoppingProduct;
 
   @override
   String get name;
@@ -301,8 +273,6 @@ abstract class ShoppingProduct implements ShoppingModel {
   IconData get icon;
   @override
   int get index;
-  @override
-  bool get isDisabled;
   @override
   @JsonKey(ignore: true)
   _$$ShoppingProductCopyWith<_$ShoppingProduct> get copyWith =>
