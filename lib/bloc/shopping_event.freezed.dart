@@ -19,19 +19,19 @@ mixin _$ShoppingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ShoppingProduct product) add,
-    required TResult Function() remove,
+    required TResult Function(int index) remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ShoppingProduct product)? add,
-    TResult? Function()? remove,
+    TResult? Function(int index)? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ShoppingProduct product)? add,
-    TResult Function()? remove,
+    TResult Function(int index)? remove,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,7 +147,7 @@ class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ShoppingProduct product) add,
-    required TResult Function() remove,
+    required TResult Function(int index) remove,
   }) {
     return add(product);
   }
@@ -156,7 +156,7 @@ class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ShoppingProduct product)? add,
-    TResult? Function()? remove,
+    TResult? Function(int index)? remove,
   }) {
     return add?.call(product);
   }
@@ -165,7 +165,7 @@ class _$AddEvent with DiagnosticableTreeMixin implements AddEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ShoppingProduct product)? add,
-    TResult Function()? remove,
+    TResult Function(int index)? remove,
     required TResult orElse(),
   }) {
     if (add != null) {
@@ -220,6 +220,8 @@ abstract class _$$RemoveEventCopyWith<$Res> {
   factory _$$RemoveEventCopyWith(
           _$RemoveEvent value, $Res Function(_$RemoveEvent) then) =
       __$$RemoveEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -229,60 +231,86 @@ class __$$RemoveEventCopyWithImpl<$Res>
   __$$RemoveEventCopyWithImpl(
       _$RemoveEvent _value, $Res Function(_$RemoveEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$RemoveEvent(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RemoveEvent with DiagnosticableTreeMixin implements RemoveEvent {
-  const _$RemoveEvent();
+  const _$RemoveEvent({required this.index});
+
+  @override
+  final int index;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShoppingEvent.remove()';
+    return 'ShoppingEvent.remove(index: $index)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ShoppingEvent.remove'));
+    properties
+      ..add(DiagnosticsProperty('type', 'ShoppingEvent.remove'))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RemoveEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveEvent &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveEventCopyWith<_$RemoveEvent> get copyWith =>
+      __$$RemoveEventCopyWithImpl<_$RemoveEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ShoppingProduct product) add,
-    required TResult Function() remove,
+    required TResult Function(int index) remove,
   }) {
-    return remove();
+    return remove(index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ShoppingProduct product)? add,
-    TResult? Function()? remove,
+    TResult? Function(int index)? remove,
   }) {
-    return remove?.call();
+    return remove?.call(index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ShoppingProduct product)? add,
-    TResult Function()? remove,
+    TResult Function(int index)? remove,
     required TResult orElse(),
   }) {
     if (remove != null) {
-      return remove();
+      return remove(index);
     }
     return orElse();
   }
@@ -320,5 +348,10 @@ class _$RemoveEvent with DiagnosticableTreeMixin implements RemoveEvent {
 }
 
 abstract class RemoveEvent implements ShoppingEvent {
-  const factory RemoveEvent() = _$RemoveEvent;
+  const factory RemoveEvent({required final int index}) = _$RemoveEvent;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$RemoveEventCopyWith<_$RemoveEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }

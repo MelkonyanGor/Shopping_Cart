@@ -7,5 +7,5 @@ part 'shopping_event.freezed.dart';
 @freezed
 class ShoppingEvent with _$ShoppingEvent {
  const factory ShoppingEvent.add({required ShoppingProduct product}) = AddEvent;
- const factory ShoppingEvent.remove() = RemoveEvent;
+ const factory ShoppingEvent.remove({required int index}) = RemoveEvent;
 }

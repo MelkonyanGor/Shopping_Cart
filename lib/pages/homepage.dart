@@ -15,10 +15,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<ShoppingProduct> products = [
     const ShoppingProduct(
-        name: 'iphone',
-        price: 100,
-        icon: Icons.phone_android_outlined,
-        index: 0),
+      name: 'iphone',
+      price: 100,
+      icon: Icons.phone_android_outlined,
+      index: 0,
+    ),
     const ShoppingProduct(
       name: 'iwatch',
       price: 50,
@@ -52,9 +53,7 @@ class _HomePageState extends State<HomePage> {
                       state.products.length.toString(),
                     ),
                     const SizedBox(width: 40.0),
-                    Text(
-                      state.price.toString(),
-                    ),
+                    Text(''),
                     const Text('USD'),
                   ],
                 );

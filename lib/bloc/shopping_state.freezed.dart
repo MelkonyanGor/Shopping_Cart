@@ -17,20 +17,19 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ShoppingState {
   List<dynamic> get products => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<dynamic> products, int price) productList,
+    required TResult Function(List<dynamic> products) productList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<dynamic> products, int price)? productList,
+    TResult? Function(List<dynamic> products)? productList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<dynamic> products, int price)? productList,
+    TResult Function(List<dynamic> products)? productList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +61,7 @@ abstract class $ShoppingStateCopyWith<$Res> {
           ShoppingState value, $Res Function(ShoppingState) then) =
       _$ShoppingStateCopyWithImpl<$Res, ShoppingState>;
   @useResult
-  $Res call({List<dynamic> products, int price});
+  $Res call({List<dynamic> products});
 }
 
 /// @nodoc
@@ -79,17 +78,12 @@ class _$ShoppingStateCopyWithImpl<$Res, $Val extends ShoppingState>
   @override
   $Res call({
     Object? products = null,
-    Object? price = null,
   }) {
     return _then(_value.copyWith(
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 }
@@ -102,7 +96,7 @@ abstract class _$$ProductListCopyWith<$Res>
       __$$ProductListCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<dynamic> products, int price});
+  $Res call({List<dynamic> products});
 }
 
 /// @nodoc
@@ -117,17 +111,12 @@ class __$$ProductListCopyWithImpl<$Res>
   @override
   $Res call({
     Object? products = null,
-    Object? price = null,
   }) {
     return _then(_$ProductList(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -135,8 +124,7 @@ class __$$ProductListCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductList with DiagnosticableTreeMixin implements ProductList {
-  const _$ProductList(
-      {required final List<dynamic> products, required this.price})
+  const _$ProductList({required final List<dynamic> products})
       : _products = products;
 
   final List<dynamic> _products;
@@ -148,11 +136,8 @@ class _$ProductList with DiagnosticableTreeMixin implements ProductList {
   }
 
   @override
-  final int price;
-
-  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShoppingState.productList(products: $products, price: $price)';
+    return 'ShoppingState.productList(products: $products)';
   }
 
   @override
@@ -160,8 +145,7 @@ class _$ProductList with DiagnosticableTreeMixin implements ProductList {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ShoppingState.productList'))
-      ..add(DiagnosticsProperty('products', products))
-      ..add(DiagnosticsProperty('price', price));
+      ..add(DiagnosticsProperty('products', products));
   }
 
   @override
@@ -169,13 +153,12 @@ class _$ProductList with DiagnosticableTreeMixin implements ProductList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductList &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
-            (identical(other.price, price) || other.price == price));
+            const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_products), price);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -186,27 +169,27 @@ class _$ProductList with DiagnosticableTreeMixin implements ProductList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<dynamic> products, int price) productList,
+    required TResult Function(List<dynamic> products) productList,
   }) {
-    return productList(products, price);
+    return productList(products);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<dynamic> products, int price)? productList,
+    TResult? Function(List<dynamic> products)? productList,
   }) {
-    return productList?.call(products, price);
+    return productList?.call(products);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<dynamic> products, int price)? productList,
+    TResult Function(List<dynamic> products)? productList,
     required TResult orElse(),
   }) {
     if (productList != null) {
-      return productList(products, price);
+      return productList(products);
     }
     return orElse();
   }
@@ -241,14 +224,11 @@ class _$ProductList with DiagnosticableTreeMixin implements ProductList {
 }
 
 abstract class ProductList implements ShoppingState {
-  const factory ProductList(
-      {required final List<dynamic> products,
-      required final int price}) = _$ProductList;
+  const factory ProductList({required final List<dynamic> products}) =
+      _$ProductList;
 
   @override
   List<dynamic> get products;
-  @override
-  int get price;
   @override
   @JsonKey(ignore: true)
   _$$ProductListCopyWith<_$ProductList> get copyWith =>

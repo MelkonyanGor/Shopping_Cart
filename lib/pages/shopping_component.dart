@@ -82,6 +82,17 @@ class _ShoppingComponentState extends State<ShoppingComponent> {
                           },
                           icon: Icon(isDisabled ? Icons.done : Icons.add),
                         ),
+                         IconButton(
+                          onPressed: () {
+                            final shoppingBloc = context.read<ShoppingBloc>();
+                            shoppingBloc.add(
+                              RemoveEvent(
+                               index: widget.index,
+                              ),
+                            );
+                          },
+                        icon: const Icon(Icons.delete),
+                        ),
                       ],
                     ),
                   ],
