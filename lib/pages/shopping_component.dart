@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/bloc/shopping_bloc.dart';
 import 'package:flutter_shopping/bloc/shopping_event.dart';
+import 'package:flutter_shopping/bloc/shopping_state.dart';
 import 'package:flutter_shopping/pages/line.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_shopping/shopping_data.dart';
@@ -12,12 +13,14 @@ class ShoppingComponent extends StatefulWidget {
     required this.name,
     required this.price,
     required this.index,
+    required this.count,
   }) : super(key: key);
 
   final IconData icon;
   final String name;
-  final int price;
+  final num price;
   final int index;
+  final num count;
 
   @override
   State<ShoppingComponent> createState() => _ShoppingComponentState();
@@ -25,6 +28,7 @@ class ShoppingComponent extends StatefulWidget {
 
 class _ShoppingComponentState extends State<ShoppingComponent> {
   bool isDisabled = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -76,22 +80,42 @@ class _ShoppingComponentState extends State<ShoppingComponent> {
                                   price: widget.price,
                                   icon: widget.icon,
                                   index: widget.index,
+                                  count: widget.count,
                                 ),
                               ),
                             );
                           },
                           icon: Icon(isDisabled ? Icons.done : Icons.add),
                         ),
-                         IconButton(
+                        BlocBuilder<ShoppingBloc, ShoppingState>(
+                          builder: (context, state) {
+                            num count = 0;
+                            for (int i = 0; i < state.products.length; i++) {
+                              if (state.products[i] == state.products[i].name) {
+                                count += 1;
+                              }
+                              if (state.products[i] == state.products[i].name) {
+                                count += 1;
+                              }
+                              if (state.products[i] == state.products[i].name) {
+                                count += 1;
+                              }
+                            }
+                            return Text(
+                              count.toString(),
+                            );
+                          },
+                        ),
+                        IconButton(
                           onPressed: () {
                             final shoppingBloc = context.read<ShoppingBloc>();
                             shoppingBloc.add(
                               RemoveEvent(
-                               index: widget.index,
+                                index: widget.index,
                               ),
                             );
                           },
-                        icon: const Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                         ),
                       ],
                     ),

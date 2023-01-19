@@ -3,13 +3,15 @@ import 'package:flutter_shopping/bloc/shopping_event.dart';
 import 'package:flutter_shopping/bloc/shopping_state.dart';
 
 class ShoppingBloc extends Bloc<ShoppingEvent, ShoppingState> {
-  ShoppingBloc() : super(const ShoppingState.productList(products: [])) {
+  ShoppingBloc()
+      : super(const ShoppingState.productList(products: [])) {
     on<AddEvent>(
       (event, emit) {
         final newProducts = [...state.products];
         newProducts.add(event.product);
         emit(
           ShoppingState.productList(
+            
             products: [...newProducts],
           ),
         );
@@ -21,6 +23,7 @@ class ShoppingBloc extends Bloc<ShoppingEvent, ShoppingState> {
         newProducts.removeAt(event.index);
         emit(
           ShoppingState.productList(
+            
             products: [...newProducts],
           ),
         );

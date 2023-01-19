@@ -17,24 +17,29 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ShoppingModel {
   String get name => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
+  num get price => throw _privateConstructorUsedError;
   IconData get icon => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
+  num get count => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, int price, IconData icon, int index)
+    required TResult Function(
+            String name, num price, IconData icon, int index, num count)
         product,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, int price, IconData icon, int index)?
+    TResult? Function(
+            String name, num price, IconData icon, int index, num count)?
         product,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, int price, IconData icon, int index)? product,
+    TResult Function(
+            String name, num price, IconData icon, int index, num count)?
+        product,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,7 +71,7 @@ abstract class $ShoppingModelCopyWith<$Res> {
           ShoppingModel value, $Res Function(ShoppingModel) then) =
       _$ShoppingModelCopyWithImpl<$Res, ShoppingModel>;
   @useResult
-  $Res call({String name, int price, IconData icon, int index});
+  $Res call({String name, num price, IconData icon, int index, num count});
 }
 
 /// @nodoc
@@ -86,6 +91,7 @@ class _$ShoppingModelCopyWithImpl<$Res, $Val extends ShoppingModel>
     Object? price = null,
     Object? icon = null,
     Object? index = null,
+    Object? count = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -95,7 +101,7 @@ class _$ShoppingModelCopyWithImpl<$Res, $Val extends ShoppingModel>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as num,
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
@@ -104,6 +110,10 @@ class _$ShoppingModelCopyWithImpl<$Res, $Val extends ShoppingModel>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as num,
     ) as $Val);
   }
 }
@@ -116,7 +126,7 @@ abstract class _$$ShoppingProductCopyWith<$Res>
       __$$ShoppingProductCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int price, IconData icon, int index});
+  $Res call({String name, num price, IconData icon, int index, num count});
 }
 
 /// @nodoc
@@ -134,6 +144,7 @@ class __$$ShoppingProductCopyWithImpl<$Res>
     Object? price = null,
     Object? icon = null,
     Object? index = null,
+    Object? count = null,
   }) {
     return _then(_$ShoppingProduct(
       name: null == name
@@ -143,7 +154,7 @@ class __$$ShoppingProductCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as num,
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
@@ -152,6 +163,10 @@ class __$$ShoppingProductCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as num,
     ));
   }
 }
@@ -163,20 +178,23 @@ class _$ShoppingProduct implements ShoppingProduct {
       {required this.name,
       required this.price,
       required this.icon,
-      required this.index});
+      required this.index,
+      required this.count});
 
   @override
   final String name;
   @override
-  final int price;
+  final num price;
   @override
   final IconData icon;
   @override
   final int index;
+  @override
+  final num count;
 
   @override
   String toString() {
-    return 'ShoppingModel.product(name: $name, price: $price, icon: $icon, index: $index)';
+    return 'ShoppingModel.product(name: $name, price: $price, icon: $icon, index: $index, count: $count)';
   }
 
   @override
@@ -187,11 +205,12 @@ class _$ShoppingProduct implements ShoppingProduct {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, price, icon, index);
+  int get hashCode => Object.hash(runtimeType, name, price, icon, index, count);
 
   @JsonKey(ignore: true)
   @override
@@ -202,29 +221,33 @@ class _$ShoppingProduct implements ShoppingProduct {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String name, int price, IconData icon, int index)
+    required TResult Function(
+            String name, num price, IconData icon, int index, num count)
         product,
   }) {
-    return product(name, price, icon, index);
+    return product(name, price, icon, index, count);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String name, int price, IconData icon, int index)?
+    TResult? Function(
+            String name, num price, IconData icon, int index, num count)?
         product,
   }) {
-    return product?.call(name, price, icon, index);
+    return product?.call(name, price, icon, index, count);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, int price, IconData icon, int index)? product,
+    TResult Function(
+            String name, num price, IconData icon, int index, num count)?
+        product,
     required TResult orElse(),
   }) {
     if (product != null) {
-      return product(name, price, icon, index);
+      return product(name, price, icon, index, count);
     }
     return orElse();
   }
@@ -261,18 +284,21 @@ class _$ShoppingProduct implements ShoppingProduct {
 abstract class ShoppingProduct implements ShoppingModel {
   const factory ShoppingProduct(
       {required final String name,
-      required final int price,
+      required final num price,
       required final IconData icon,
-      required final int index}) = _$ShoppingProduct;
+      required final int index,
+      required final num count}) = _$ShoppingProduct;
 
   @override
   String get name;
   @override
-  int get price;
+  num get price;
   @override
   IconData get icon;
   @override
   int get index;
+  @override
+  num get count;
   @override
   @JsonKey(ignore: true)
   _$$ShoppingProductCopyWith<_$ShoppingProduct> get copyWith =>

@@ -19,20 +19,24 @@ class _HomePageState extends State<HomePage> {
       price: 100,
       icon: Icons.phone_android_outlined,
       index: 0,
+      count: 1,
     ),
     const ShoppingProduct(
       name: 'iwatch',
       price: 50,
       icon: Icons.watch,
       index: 1,
+      count: 1,
     ),
     const ShoppingProduct(
       name: 'macbook',
       price: 150,
       icon: Icons.computer,
       index: 2,
+      count: 1,
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -43,6 +47,10 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: BlocBuilder<ShoppingBloc, ShoppingState>(
               builder: (context, state) {
+                num total = 0;
+                for (int i = 0; i < state.products.length; i++) {
+                  total += state.products[i].price;
+                }
                 return Row(
                   children: [
                     const Padding(
@@ -52,9 +60,15 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       state.products.length.toString(),
                     ),
-                    const SizedBox(width: 40.0),
-                    Text(''),
-                    const Text('USD'),
+                    const SizedBox(
+                      width: 40.0,
+                    ),
+                    Text(
+                      total.toString(),
+                    ),
+                    const Text(
+                      'USD',
+                    ),
                   ],
                 );
               },
@@ -71,6 +85,7 @@ class _HomePageState extends State<HomePage> {
                   name: products[index].name,
                   price: products[index].price,
                   index: products[index].index,
+                  count: products[index].count,
                 );
               },
             );
