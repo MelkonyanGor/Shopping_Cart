@@ -13,14 +13,12 @@ class ShoppingComponent extends StatefulWidget {
     required this.name,
     required this.price,
     required this.index,
-    required this.count,
   }) : super(key: key);
 
   final IconData icon;
   final String name;
   final num price;
   final int index;
-  final num count;
 
   @override
   State<ShoppingComponent> createState() => _ShoppingComponentState();
@@ -80,7 +78,6 @@ class _ShoppingComponentState extends State<ShoppingComponent> {
                                   price: widget.price,
                                   icon: widget.icon,
                                   index: widget.index,
-                                  count: widget.count,
                                 ),
                               ),
                             );
@@ -89,15 +86,9 @@ class _ShoppingComponentState extends State<ShoppingComponent> {
                         ),
                         BlocBuilder<ShoppingBloc, ShoppingState>(
                           builder: (context, state) {
-                            num count = 0;
+                            int count = 0;
                             for (int i = 0; i < state.products.length; i++) {
-                              if (state.products[i] == state.products[i].name) {
-                                count += 1;
-                              }
-                              if (state.products[i] == state.products[i].name) {
-                                count += 1;
-                              }
-                              if (state.products[i] == state.products[i].name) {
+                              if (state.products[i].name == 'iphone') {
                                 count += 1;
                               }
                             }
